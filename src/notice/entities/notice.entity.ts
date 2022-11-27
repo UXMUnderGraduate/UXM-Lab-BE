@@ -1,13 +1,8 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseTimeEntity } from '../../common/entity/BaseTimeEntity';
 
 @Entity()
-export class Notice {
+export class Notice extends BaseTimeEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -16,10 +11,4 @@ export class Notice {
 
   @Column({ type: 'text' })
   contents: string;
-
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
 }

@@ -23,7 +23,6 @@ sh ./infra/mysql.sh
 ```bash
 # local profile
 npm install
-npm run build
 npm run start
 ```
 

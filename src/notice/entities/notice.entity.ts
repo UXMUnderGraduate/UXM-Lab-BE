@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BaseTimeEntity } from '../../common/entity/BaseTimeEntity';
+import { BaseTimeEntity } from '../../common/entities/BaseTimeEntity';
 
 @Entity()
 export class Notice extends BaseTimeEntity {
@@ -11,4 +11,20 @@ export class Notice extends BaseTimeEntity {
 
   @Column({ type: 'text' })
   contents: string;
+
+  editTitle(title: string): void {
+    this.title = title;
+  }
+
+  editContents(contents: string): void {
+    this.contents = contents;
+  }
+
+  static of(title: string, contents: string): Notice {
+    const notice: Notice = new Notice();
+    notice.title = title;
+    notice.contents = contents;
+
+    return notice;
+  }
 }

@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 
 async function run() {
   const app = await NestFactory.create(AppModule);
-  const port: number = Number.parseInt(process.env.PORT) || 8080;
+  const port: number = Number.parseInt(process.env.PORT) || 8887;
 
   app.setGlobalPrefix('api');
 

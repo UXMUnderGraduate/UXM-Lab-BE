@@ -15,9 +15,8 @@ export class NoticeService {
 
   async create(createNoticeDto: CreateNoticeDto): Promise<number> {
     const newNotice: Notice = CreateNoticeDto.toEntity(createNoticeDto);
-    console.log(newNotice);
+
     const savedNotice = await this.noticeRepository.save<Notice>(newNotice);
-    console.log(savedNotice);
     return savedNotice.id;
   }
 
@@ -26,7 +25,7 @@ export class NoticeService {
     return notices.map(ResponseNoticeDto.from);
   }
 
-  async findOneBy(id: number): Promise<ResponseNoticeDto> {
+  async findOneById(id: number): Promise<ResponseNoticeDto> {
     const notice: Notice = await this.existById(id);
 
     return ResponseNoticeDto.from(notice);
@@ -39,8 +38,6 @@ export class NoticeService {
 
   async update(id: number, updateNoticeDto: UpdateNoticeDto): Promise<void> {
     const notice: Notice = await this.existById(id);
-
-    // console.log(notice);
 
     if (updateNoticeDto.title != null) {
       notice.editTitle(updateNoticeDto.title);
@@ -57,7 +54,7 @@ export class NoticeService {
 
   async existById(id: number): Promise<Notice> {
     const notice: Notice = await this.noticeRepository.findOneBy({ id });
-    console.log(notice);
+
     if (notice == null) {
       throw new NotFoundException();
     }

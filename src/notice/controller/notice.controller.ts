@@ -28,7 +28,7 @@ export class NoticeController {
 
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<ResponseNoticeDto> {
-    return await this.noticeService.findOneBy(+id);
+    return await this.noticeService.findOneById(+id);
   }
 
   @Patch(':id')

@@ -15,12 +15,12 @@ services:
     image: mysql:8.0.29
     container_name: uxm-db-mysql
     ports:
-      - 3306:3306
+      - 33306:3306
     volumes:
       - data:/var/lib/mysql
       - config:/etc/mysql/conf.d
     environment:
-      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_ROOT_PASSWORD: 12345678
       MYSQL_DATABASE: uxm
     platform: linux/x86_64
     restart: always
@@ -34,6 +34,6 @@ services:
       - 8090:80
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_ROOT_PASSWORD: 12345678
     platform: linux/x86_64
     restart: always

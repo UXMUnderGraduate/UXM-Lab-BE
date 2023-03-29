@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Publication } from '../entities/publication.entity';
 import { ResponsePublicationDto } from '../dto/reponse-publication.dto';
+import { UpdatePublicationDto } from '../dto/update-publication.dto';
 
 @Injectable()
 export class PublicationService {
@@ -37,6 +38,23 @@ export class PublicationService {
   async remove(id: number): Promise<void> {
     const publication: Publication = await this.existById(id);
     await this.publicationRepository.remove(publication);
+  }
+
+  async update(
+    id: number,
+    updatePublicationDto: UpdatePublicationDto,
+  ): Promise<void> {
+    const publication: Publication = await this.existById(id);
+
+    if (updatePublicationDto.year != null) {
+      publication.editYear(updatePublicationDto.year);
+    }
+
+    if (updatePublicationDto.contents != null) {
+      publication.editContents(updatePublicationDto.contents);
+    }
+
+    await this.publicationRepository.save<Publication>(publication);
   }
 
   private async existById(id: number): Promise<Publication> {

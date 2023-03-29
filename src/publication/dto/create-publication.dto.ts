@@ -1,7 +1,9 @@
 import { Publication } from '../entities/publication.entity';
 
 export class CreatePublicationDto {
-  title: string;
+  year: string;
+
+  contents: string;
 
   author: string;
 
@@ -11,7 +13,8 @@ export class CreatePublicationDto {
 
   static toEntity(createPulicationDto: CreatePublicationDto): Publication {
     return Publication.of(
-      createPulicationDto.title,
+      createPulicationDto.year,
+      createPulicationDto.contents,
       createPulicationDto.author,
       createPulicationDto.publisher,
       createPulicationDto.publishedDate,

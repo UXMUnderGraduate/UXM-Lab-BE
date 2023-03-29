@@ -28,6 +28,9 @@ export class Member extends BaseTimeEntity {
   @Column()
   img: string;
 
+  @Column()
+  company: string;
+
   static of(
     nameKr: string,
     nameEn: string,
@@ -35,6 +38,7 @@ export class Member extends BaseTimeEntity {
     researchField: string,
     email: string,
     img: string,
+    company: string,
   ): Member {
     const member: Member = new Member();
 
@@ -44,6 +48,7 @@ export class Member extends BaseTimeEntity {
     member.researchField = researchField;
     member.email = email;
     member.img = img;
+    member.company = company;
 
     member.isAlumni = false;
 

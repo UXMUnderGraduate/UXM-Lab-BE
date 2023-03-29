@@ -8,9 +8,13 @@ import { MemberModule } from './member/member.module';
 import { ImageModule } from './image/image.module';
 import typeOrmConfig from './common/config/type-orm.config';
 import { GalleyModule } from './galley/galley.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     TypeOrmModule.forRoot(typeOrmConfig),
     NoticeModule,
     PublicationModule,

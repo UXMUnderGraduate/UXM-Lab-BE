@@ -8,6 +8,7 @@ export class CreateMemberDto {
   readonly researchField: string;
   readonly email: string;
   readonly img: string;
+  readonly company: string;
 
   static toEntity(dto: CreateMemberDto): Member {
     return Member.of(
@@ -17,6 +18,7 @@ export class CreateMemberDto {
       dto.researchField,
       dto.email,
       dto.img,
+      dto.company,
     );
   }
 }

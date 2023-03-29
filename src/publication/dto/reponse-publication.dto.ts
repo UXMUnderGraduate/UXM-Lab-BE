@@ -3,7 +3,9 @@ import { Publication } from '../entities/publication.entity';
 export class ResponsePublicationDto {
   private readonly id: number;
 
-  private readonly title: string;
+  private readonly year: string;
+
+  private readonly contents: string;
 
   private readonly author: string;
 
@@ -17,7 +19,8 @@ export class ResponsePublicationDto {
 
   constructor(
     id: number,
-    title: string,
+    year: string,
+    contents: string,
     author: string,
     publisher: string,
     publishedDate: Date,
@@ -25,7 +28,8 @@ export class ResponsePublicationDto {
     updatedAt: Date,
   ) {
     this.id = id;
-    this.title = title;
+    this.year = year;
+    this.contents = contents;
     this.author = author;
     this.publisher = publisher;
     this.publishedDate = publishedDate;
@@ -36,7 +40,8 @@ export class ResponsePublicationDto {
   static from(publication: Publication): ResponsePublicationDto {
     return new ResponsePublicationDto(
       publication.id,
-      publication.title,
+      publication.year,
+      publication.contents,
       publication.author,
       publication.publisher,
       publication.publishedDate,

@@ -7,7 +7,10 @@ export class Publication extends BaseTimeEntity {
   id: number;
 
   @Column()
-  title: string;
+  year: string; //연산을 위한 값이 아닌, 노출을 위한 값이니 문자열로 설정함.
+
+  @Column()
+  contents: string;
 
   @Column()
   author: string;
@@ -18,14 +21,24 @@ export class Publication extends BaseTimeEntity {
   @Column()
   publishedDate: Date;
 
+  editYear(year: string): void {
+    this.year = year;
+  }
+
+  editContents(contents: string): void {
+    this.contents = contents;
+  }
+
   static of(
-    title: string,
+    year: string,
+    contents: string,
     author: string,
     publisher: string,
     publishedDate: Date,
   ): Publication {
     const publication: Publication = new Publication();
-    publication.title = title;
+    publication.year = year;
+    publication.contents = contents;
     publication.author = author;
     publication.publisher = publisher;
     publication.publishedDate = publishedDate;

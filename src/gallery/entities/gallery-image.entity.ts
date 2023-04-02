@@ -10,7 +10,9 @@ export class GalleryImage extends BaseTimeEntity {
   @Column()
   imgUrl: string;
 
-  @ManyToOne(() => Gallery, (Gallery) => Gallery.images)
+  @ManyToOne(() => Gallery, (Gallery) => Gallery.images, {
+    onDelete: 'CASCADE',
+  })
   gallery: Gallery;
 
   static from(url: string): GalleryImage {

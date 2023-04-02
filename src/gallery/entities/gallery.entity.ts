@@ -13,7 +13,9 @@ export class Gallery extends BaseTimeEntity {
   @Column({ type: 'text' })
   contents: string;
 
-  @OneToMany(() => GalleryImage, (GalleryImage) => GalleryImage.gallery)
+  @OneToMany(() => GalleryImage, (GalleryImage) => GalleryImage.gallery, {
+    cascade: true,
+  })
   images: GalleryImage[];
 
   static of(title: string, contents: string, images: GalleryImage[]): Gallery {

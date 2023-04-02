@@ -1,6 +1,6 @@
-import { Galley } from '../entities/gallery.entity';
+import { Gallery } from '../entities/gallery.entity';
 
-export class ResponseGalleyDto {
+export class ResponseGalleryDto {
   private readonly id: number;
 
   private readonly title: string;
@@ -29,17 +29,19 @@ export class ResponseGalleyDto {
     this.updatedAt = updatedAt;
   }
 
-  static from(galley: Galley): ResponseGalleyDto {
+  static from(gallery: Gallery): ResponseGalleryDto {
     const imgUrls =
-      galley.images != null ? galley.images.map((galley) => galley.imgUrl) : [];
+      gallery.images != null
+        ? gallery.images.map((galley) => galley.imgUrl)
+        : [];
 
-    return new ResponseGalleyDto(
-      galley.id,
-      galley.title,
-      galley.contents,
+    return new ResponseGalleryDto(
+      gallery.id,
+      gallery.title,
+      gallery.contents,
       imgUrls,
-      galley.createdAt,
-      galley.updatedAt,
+      gallery.createdAt,
+      gallery.updatedAt,
     );
   }
 }

@@ -2,29 +2,29 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateGalleryDto } from '../dto/create-gallery.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Galley } from '../entities/gallery.entity';
-import { ResponseGalleyDto } from '../dto/reponse-gallery.dto';
-import { GalleyImage } from '../entities/gallery-image.entity';
+import { Gallery } from '../entities/gallery.entity';
+import { ResponseGalleryDto } from '../dto/reponse-gallery.dto';
+import { GalleryImage } from '../entities/gallery-image.entity';
 
 @Injectable()
 export class GalleryService {
   constructor(
-    @InjectRepository(Galley)
-    private readonly galleyRepository: Repository<Galley>,
-    @InjectRepository(GalleyImage)
-    private readonly galleyImgRepository: Repository<GalleyImage>,
+    @InjectRepository(Gallery)
+    private readonly galleyRepository: Repository<Gallery>,
+    @InjectRepository(GalleryImage)
+    private readonly galleyImgRepository: Repository<GalleryImage>,
   ) {}
 
   async create(createGalleyDto: CreateGalleryDto): Promise<number> {
-    const imgUrls = new Array<GalleyImage>(createGalleyDto.imgUrls.length);
+    const imgUrls = new Array<GalleryImage>(createGalleyDto.imgUrls.length);
 
     for (const imgUrl of createGalleyDto.imgUrls) {
-      const newImage = GalleyImage.from(imgUrl);
+      const newImage = GalleryImage.from(imgUrl);
       const saveImage = await this.galleyImgRepository.save(newImage);
       imgUrls.push(saveImage);
     }
 
-    const galley = Galley.of(
+    const galley = Gallery.of(
       createGalleyDto.title,
       createGalleyDto.contents,
       imgUrls,
@@ -34,38 +34,38 @@ export class GalleryService {
     return savedGalley.id;
   }
 
-  async findAll(): Promise<ResponseGalleyDto[]> {
-    const publications: Galley[] = await this.galleyRepository.find({
+  async findAll(): Promise<ResponseGalleryDto[]> {
+    const publications: Gallery[] = await this.galleyRepository.find({
       relations: {
         images: true,
       },
     });
 
-    return publications.map(ResponseGalleyDto.from);
+    return publications.map(ResponseGalleryDto.from);
   }
 
-  async findOneById(id: number): Promise<ResponseGalleyDto> {
-    const publication: Galley = await this.existById(id);
+  async findOneById(id: number): Promise<ResponseGalleryDto> {
+    const publication: Gallery = await this.existById(id);
 
-    return ResponseGalleyDto.from(publication);
+    return ResponseGalleryDto.from(publication);
   }
 
   async remove(id: number): Promise<void> {
     await this.galleyRepository.delete(id);
   }
 
-  private async existById(id: number): Promise<Galley> {
-    const galley: Galley = await this.galleyRepository.findOne({
+  private async existById(id: number): Promise<Gallery> {
+    const gallery: Gallery = await this.galleyRepository.findOne({
       where: { id },
       relations: {
         images: true,
       },
     });
 
-    if (galley == null) {
+    if (gallery == null) {
       throw new NotFoundException();
     }
 
-    return galley;
+    return gallery;
   }
 }

@@ -8,7 +8,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { ResearchService } from '../service/research.service';
-import { CreateResearchDto } from '../dto/create-admin.dto';
+import { CreateResearchDto } from '../dto/create-research.dto';
 import { ResponseResearchDto } from '../dto/response-research.dto';
 import { UpdateResearchDto } from '../dto/update-research.dto';
 
@@ -33,7 +33,7 @@ export class ResearchController {
 
   @Patch(':id')
   async update(
-    @Param(':id') id: string,
+    @Param('id') id: string,
     @Body() updateResearchDto: UpdateResearchDto,
   ) {
     return await this.researchService.update(+id, updateResearchDto);

@@ -1,8 +1,8 @@
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm/browser';
-import { Research } from '../entities/research.entity';
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateResearchDto } from '../dto/create-admin.dto';
+import { CreateResearchDto } from '../dto/create-research.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Research } from '../entities/research.entity';
 import { ResponseResearchDto } from '../dto/response-research.dto';
 import { UpdateResearchDto } from '../dto/update-research.dto';
 
@@ -52,6 +52,10 @@ export class ResearchService {
     if (updateResearchDto.extraAddress != null) {
       research.editExtraAddress(updateResearchDto.extraAddress);
     }
+
+    console.log(research);
+
+    await this.researchRepository.save<Research>(research);
   }
   private async existById(id: number): Promise<Research> {
     const research: Research = await this.researchRepository.findOneBy({ id });

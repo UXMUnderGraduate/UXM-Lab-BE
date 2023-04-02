@@ -19,7 +19,7 @@ export class Research extends BaseTimeEntity {
     this.title = title;
   }
 
-  editContents(contents: string): void{
+  editContents(contents: string): void {
     this.contents = contents;
   }
 

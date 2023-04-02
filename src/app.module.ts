@@ -9,6 +9,7 @@ import { ImageModule } from './image/image.module';
 import typeOrmConfig from './common/config/type-orm.config';
 import { GalleryModule } from './gallery/gallery.module';
 import { ConfigModule } from '@nestjs/config';
+import { ResearchModule } from './research/research.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ConfigModule } from '@nestjs/config';
     MemberModule,
     ImageModule,
     GalleryModule,
+    ResearchModule,
   ],
   controllers: [AppController],
   providers: [AppService],

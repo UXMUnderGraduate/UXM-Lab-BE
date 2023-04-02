@@ -7,7 +7,7 @@ import { PublicationModule } from './publication/publication.module';
 import { MemberModule } from './member/member.module';
 import { ImageModule } from './image/image.module';
 import typeOrmConfig from './common/config/type-orm.config';
-import { GalleyModule } from './galley/galley.module';
+import { GalleryModule } from './gallery/gallery.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
@@ -20,7 +20,7 @@ import { ConfigModule } from '@nestjs/config';
     PublicationModule,
     MemberModule,
     ImageModule,
-    GalleyModule,
+    GalleryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

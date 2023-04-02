@@ -1,20 +1,20 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseTimeEntity } from '../../common/entities/BaseTimeEntity';
-import { Galley } from './galley.entity';
+import { Gallery } from './gallery.entity';
 
 @Entity()
-export class GalleyImage extends BaseTimeEntity {
+export class GalleryImage extends BaseTimeEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   imgUrl: string;
 
-  @ManyToOne(() => Galley, (Galley) => Galley.images)
-  galley: Galley;
+  @ManyToOne(() => Gallery, (Gallery) => Gallery.images)
+  gallery: Gallery;
 
-  static from(url: string): GalleyImage {
-    const image = new GalleyImage();
+  static from(url: string): GalleryImage {
+    const image = new GalleryImage();
     image.imgUrl = url;
 
     return image;

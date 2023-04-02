@@ -1,6 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseTimeEntity } from '../../common/entities/BaseTimeEntity';
-import { GalleyImage } from './galley-image.entity';
+import { GalleyImage } from './gallery-image.entity';
 
 @Entity()
 export class Galley extends BaseTimeEntity {

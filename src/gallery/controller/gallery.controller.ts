@@ -1,14 +1,16 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { GalleyService } from '../service/galley.service';
-import { CreateGalleyDto } from '../dto/create-galley.dto';
-import { ResponseGalleyDto } from '../dto/reponse-galley.dto';
+import { GalleryService } from '../service/gallery.service';
+import { CreateGalleryDto } from '../dto/create-gallery.dto';
+import { ResponseGalleyDto } from '../dto/reponse-gallery.dto';
 
 @Controller('galley')
-export class GalleyController {
-  constructor(private readonly galleyService: GalleyService) {}
+export class GalleryController {
+  constructor(private readonly galleyService: GalleryService) {}
 
   @Post()
-  async create(@Body() createPublicationDto: CreateGalleyDto): Promise<number> {
+  async create(
+    @Body() createPublicationDto: CreateGalleryDto,
+  ): Promise<number> {
     return await this.galleyService.create(createPublicationDto);
   }
 

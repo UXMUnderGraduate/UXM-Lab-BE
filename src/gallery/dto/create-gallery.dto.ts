@@ -1,4 +1,4 @@
-export class CreateGalleyDto {
+export class CreateGalleryDto {
   title: string;
 
   contents: string;

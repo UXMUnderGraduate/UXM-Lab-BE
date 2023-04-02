@@ -1,4 +1,4 @@
-import { Galley } from '../entities/galley.entity';
+import { Galley } from '../entities/gallery.entity';
 
 export class ResponseGalleyDto {
   private readonly id: number;

@@ -1,13 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateGalleyDto } from '../dto/create-galley.dto';
+import { CreateGalleryDto } from '../dto/create-gallery.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Galley } from '../entities/galley.entity';
-import { ResponseGalleyDto } from '../dto/reponse-galley.dto';
-import { GalleyImage } from '../entities/galley-image.entity';
+import { Galley } from '../entities/gallery.entity';
+import { ResponseGalleyDto } from '../dto/reponse-gallery.dto';
+import { GalleyImage } from '../entities/gallery-image.entity';
 
 @Injectable()
-export class GalleyService {
+export class GalleryService {
   constructor(
     @InjectRepository(Galley)
     private readonly galleyRepository: Repository<Galley>,
@@ -15,7 +15,7 @@ export class GalleyService {
     private readonly galleyImgRepository: Repository<GalleyImage>,
   ) {}
 
-  async create(createGalleyDto: CreateGalleyDto): Promise<number> {
+  async create(createGalleyDto: CreateGalleryDto): Promise<number> {
     const imgUrls = new Array<GalleyImage>(createGalleyDto.imgUrls.length);
 
     for (const imgUrl of createGalleyDto.imgUrls) {

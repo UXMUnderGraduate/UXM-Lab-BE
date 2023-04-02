@@ -10,6 +10,7 @@ export class ResponseMemberDto {
   readonly researchField: string;
   readonly email: string;
   readonly img: string;
+  readonly company: string;
 
   constructor(
     id: number,
@@ -20,6 +21,7 @@ export class ResponseMemberDto {
     researchField: string,
     email: string,
     img: string,
+    company: string,
   ) {
     this.id = id;
     this.nameKr = nameKr;
@@ -29,6 +31,7 @@ export class ResponseMemberDto {
     this.researchField = researchField;
     this.email = email;
     this.img = img;
+    this.company = company;
   }
 
   static from(entity: Member): ResponseMemberDto {
@@ -41,6 +44,7 @@ export class ResponseMemberDto {
       entity.researchField,
       entity.email,
       entity.img,
+      entity.company,
     );
   }
 }

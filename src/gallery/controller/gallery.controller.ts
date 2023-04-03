@@ -1,12 +1,21 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { GalleryService } from '../service/gallery.service';
 import { CreateGalleryDto } from '../dto/create-gallery.dto';
 import { ResponseGalleryDto } from '../dto/reponse-gallery.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('gallery')
 export class GalleryController {
   constructor(private readonly galleryService: GalleryService) {}
-
+  @UseGuards(AuthGuard())
   @Post()
   async create(
     @Body() createPublicationDto: CreateGalleryDto,
@@ -23,7 +32,7 @@ export class GalleryController {
   findOne(@Param('id') id: string) {
     return this.galleryService.findOneById(+id);
   }
-
+  @UseGuards(AuthGuard())
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.galleryService.remove(+id);

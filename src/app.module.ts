@@ -10,6 +10,7 @@ import typeOrmConfig from './common/config/type-orm.config';
 import { GalleryModule } from './gallery/gallery.module';
 import { ConfigModule } from '@nestjs/config';
 import { ResearchModule } from './research/research.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { ResearchModule } from './research/research.module';
     ImageModule,
     GalleryModule,
     ResearchModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

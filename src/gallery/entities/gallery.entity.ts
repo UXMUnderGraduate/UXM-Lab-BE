@@ -1,6 +1,13 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { BaseTimeEntity } from '../../common/entities/BaseTimeEntity';
 import { GalleryImage } from './gallery-image.entity';
+import { Auth } from '../../auth/entities/auth.entity';
 
 @Entity()
 export class Gallery extends BaseTimeEntity {

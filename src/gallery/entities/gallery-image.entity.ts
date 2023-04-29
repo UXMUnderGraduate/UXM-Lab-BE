@@ -1,6 +1,7 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseTimeEntity } from '../../common/entities/BaseTimeEntity';
 import { Gallery } from './gallery.entity';
+import { Auth } from '../../auth/entities/auth.entity';
 
 @Entity()
 export class GalleryImage extends BaseTimeEntity {

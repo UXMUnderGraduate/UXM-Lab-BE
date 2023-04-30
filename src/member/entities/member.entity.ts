@@ -1,6 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseTimeEntity } from '../../common/entities/BaseTimeEntity';
-import { Affiliation } from './affiliation.enum';
 
 @Entity()
 export class Member extends BaseTimeEntity {
@@ -15,6 +14,9 @@ export class Member extends BaseTimeEntity {
 
   @Column()
   affiliation: string;
+
+  @Column()
+  degree: string;
 
   @Column()
   isAlumni: boolean;
@@ -34,7 +36,8 @@ export class Member extends BaseTimeEntity {
   static of(
     nameKr: string,
     nameEn: string,
-    affiliation: Affiliation,
+    affiliation: string,
+    degree: string,
     researchField: string,
     email: string,
     img: string,
@@ -44,7 +47,8 @@ export class Member extends BaseTimeEntity {
 
     member.nameKr = nameKr;
     member.nameEn = nameEn;
-    member.affiliation = affiliation.toString();
+    member.affiliation = affiliation;
+    member.degree = degree;
     member.researchField = researchField;
     member.email = email;
     member.img = img;

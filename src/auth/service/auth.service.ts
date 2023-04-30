@@ -19,7 +19,7 @@ export class AuthService {
     private readonly authRepository: Repository<Auth>,
     private jwtService: JwtService,
   ) {}
-  async signUp(createAuthDto: CreateAuthDto): Promise<void> {
+  async signUp(createAuthDto: CreateAuthDto): Promise<{ result: string }> {
     const { email, password } = createAuthDto;
 
     const salt = await bcrypt.genSalt();
@@ -29,6 +29,7 @@ export class AuthService {
         email,
         password: hashedPassword,
       });
+      return { result: 'success' };
     } catch (error) {
       if (error.code === '23505') {
         throw new ConflictException('이미 존재하는 어드민입니다.');

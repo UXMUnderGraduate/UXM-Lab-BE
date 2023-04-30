@@ -1,10 +1,10 @@
 import { Member } from '../entities/member.entity';
-import { Affiliation } from '../entities/affiliation.enum';
 
 export class CreateMemberDto {
   readonly nameKr: string;
   readonly nameEn: string;
-  readonly affiliation: Affiliation;
+  readonly affiliation: string;
+  readonly degree: string;
   readonly researchField: string;
   readonly email: string;
   readonly img: string;
@@ -15,6 +15,7 @@ export class CreateMemberDto {
       dto.nameKr,
       dto.nameEn.toUpperCase(),
       dto.affiliation,
+      dto.degree,
       dto.researchField,
       dto.email,
       dto.img,

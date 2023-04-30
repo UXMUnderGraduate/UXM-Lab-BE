@@ -1,11 +1,11 @@
 import { Member } from '../entities/member.entity';
-import { Affiliation } from '../entities/affiliation.enum';
 
 export class ResponseMemberDto {
   readonly id: number;
   readonly nameKr: string;
   readonly nameEn: string;
-  readonly affiliation: Affiliation;
+  readonly affiliation: string;
+  readonly degree: string;
   readonly isAlumni: boolean;
   readonly researchField: string;
   readonly email: string;
@@ -16,7 +16,8 @@ export class ResponseMemberDto {
     id: number,
     nameKr: string,
     nameEn: string,
-    affiliation: Affiliation,
+    affiliation: string,
+    degree: string,
     isAlumni: boolean,
     researchField: string,
     email: string,
@@ -39,7 +40,8 @@ export class ResponseMemberDto {
       entity.id,
       entity.nameKr,
       entity.nameEn,
-      Affiliation[entity.affiliation],
+      entity.affiliation,
+      entity.degree,
       entity.isAlumni,
       entity.researchField,
       entity.email,

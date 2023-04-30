@@ -29,6 +29,7 @@ export class ResponseMemberDto {
     this.nameEn = nameEn;
     this.affiliation = affiliation;
     this.isAlumni = isAlumni;
+    this.degree = degree;
     this.researchField = researchField;
     this.email = email;
     this.img = img;

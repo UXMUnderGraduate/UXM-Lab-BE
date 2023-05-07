@@ -9,7 +9,7 @@ export class ResponsePublicationDto {
 
   private readonly author: string;
 
-  private readonly publisher: string;
+  private readonly publicationField: string;
 
   private readonly publishedDate: Date;
 
@@ -22,7 +22,7 @@ export class ResponsePublicationDto {
     year: string,
     contents: string,
     author: string,
-    publisher: string,
+    publicationField: string,
     publishedDate: Date,
     createdAt: Date,
     updatedAt: Date,
@@ -31,7 +31,7 @@ export class ResponsePublicationDto {
     this.year = year;
     this.contents = contents;
     this.author = author;
-    this.publisher = publisher;
+    this.publicationField = publicationField;
     this.publishedDate = publishedDate;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
@@ -43,7 +43,7 @@ export class ResponsePublicationDto {
       publication.year,
       publication.contents,
       publication.author,
-      publication.publisher,
+      publication.publicationField,
       publication.publishedDate,
       publication.createdAt,
       publication.updatedAt,

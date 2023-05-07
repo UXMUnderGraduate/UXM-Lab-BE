@@ -16,7 +16,7 @@ export class Publication extends BaseTimeEntity {
   author: string;
 
   @Column()
-  publisher: string;
+  publicationField: string;
 
   @Column()
   publishedDate: Date;
@@ -33,14 +33,14 @@ export class Publication extends BaseTimeEntity {
     year: string,
     contents: string,
     author: string,
-    publisher: string,
+    publicationField: string,
     publishedDate: Date,
   ): Publication {
     const publication: Publication = new Publication();
     publication.year = year;
     publication.contents = contents;
     publication.author = author;
-    publication.publisher = publisher;
+    publication.publicationField = publicationField;
     publication.publishedDate = publishedDate;
 
     return publication;

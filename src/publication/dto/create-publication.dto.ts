@@ -7,17 +7,17 @@ export class CreatePublicationDto {
 
   author: string;
 
-  publisher: string;
+  publicationField: string;
 
   publishedDate: Date;
 
-  static toEntity(createPulicationDto: CreatePublicationDto): Publication {
+  static toEntity(createPublicationDto: CreatePublicationDto): Publication {
     return Publication.of(
-      createPulicationDto.year,
-      createPulicationDto.contents,
-      createPulicationDto.author,
-      createPulicationDto.publisher,
-      createPulicationDto.publishedDate,
+      createPublicationDto.year,
+      createPublicationDto.contents,
+      createPublicationDto.author,
+      createPublicationDto.publicationField,
+      createPublicationDto.publishedDate,
     );
   }
 }

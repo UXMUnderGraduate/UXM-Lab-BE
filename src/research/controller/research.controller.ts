@@ -30,7 +30,7 @@ export class ResearchController {
   }
 
   @Get(':id')
-  findOne(@Param(':id') id: string) {
+  findOne(@Param('id') id: string) {
     return this.researchService.findOneById(+id);
   }
   @UseGuards(AuthGuard())

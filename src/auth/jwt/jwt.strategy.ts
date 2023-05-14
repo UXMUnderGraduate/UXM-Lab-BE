@@ -4,13 +4,8 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Auth } from '../entities/auth.entity';
-const cookieExtractor = function (req) {
-  let token = null;
-  if (req && req.cookies) {
-    token = req.cookies['Authentication'] || req.header;
-  }
-  return token;
-};
+import { Request } from 'express';
+
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
@@ -19,7 +14,13 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   ) {
     super({
       secretOrKey: process.env.JWTSECRETKEY || 'Secret1234',
-      jwtFromRequest: cookieExtractor,
+      jwtFromRequest: ExtractJwt.fromExtractors([
+        (request: Request) => {
+          const [type, token] = request.headers.authorization?.split(' ') ?? [];
+          return type === 'Bearer' ? token : undefined;
+        },
+      ]),
+      ignoreExpiration: false,
     });
   }
 
@@ -28,7 +29,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     const user: Auth = await this.authRepository.findOne({ where: { email } });
 
     if (!user) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('not user');
     }
 
     return user;

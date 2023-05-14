@@ -19,6 +19,7 @@ export class AuthController {
     @Res({ passthrough: true }) res: Response,
   ): Promise<{ accessToken: string }> {
     const accessToken = this.authService.signIn(responseAuthDto);
+
     res.cookie('Authentication', accessToken, {
       domain: 'localhost',
       path: '/',

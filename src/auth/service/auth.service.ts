@@ -2,6 +2,7 @@ import {
   ConflictException,
   Injectable,
   InternalServerErrorException,
+  Res,
   UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -47,7 +48,6 @@ export class AuthService {
       // 유저 토큰 생성 ( Secret + Payload )
       const payload = { email };
       const accessToken = await this.jwtService.signAsync(payload);
-
       return { accessToken };
     } else {
       throw new UnauthorizedException('Fail');

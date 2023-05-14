@@ -4,7 +4,13 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Auth } from '../entities/auth.entity';
-
+const cookieExtractor = function (req) {
+  let token = null;
+  if (req && req.cookies) {
+    token = req.cookies['Authentication'] || req.header;
+  }
+  return token;
+};
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
@@ -13,7 +19,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   ) {
     super({
       secretOrKey: process.env.JWTSECRETKEY || 'Secret1234',
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      jwtFromRequest: cookieExtractor,
     });
   }
 

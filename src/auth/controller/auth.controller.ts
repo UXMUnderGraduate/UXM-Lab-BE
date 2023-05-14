@@ -21,7 +21,7 @@ export class AuthController {
     const accessToken = this.authService.signIn(responseAuthDto);
 
     res.cookie('Authentication', accessToken, {
-      domain: 'localhost',
+      domain: 'uxm.mju.ac.kr',
       path: '/',
       httpOnly: true,
       maxAge: 0.5 * 60 * 60 * 1000, //0.5 hour

@@ -4,6 +4,7 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Auth } from '../entities/auth.entity';
+import { Request } from 'express';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -13,7 +14,13 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   ) {
     super({
       secretOrKey: process.env.JWTSECRETKEY || 'Secret1234',
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      jwtFromRequest: ExtractJwt.fromExtractors([
+        (request: Request) => {
+          const [type, token] = request.headers.authorization?.split(' ') ?? [];
+          return type === 'Bearer' ? token : undefined;
+        },
+      ]),
+      ignoreExpiration: false,
     });
   }
 
@@ -22,7 +29,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     const user: Auth = await this.authRepository.findOne({ where: { email } });
 
     if (!user) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('not user');
     }
 
     return user;

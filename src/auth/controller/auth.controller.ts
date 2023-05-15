@@ -14,18 +14,11 @@ export class AuthController {
   }
 
   @Post('/signIn')
-  async signIn(
+  signIn(
     @Body() responseAuthDto: ResponseAuthDto,
     @Res({ passthrough: true }) res: Response,
   ): Promise<{ accessToken: string }> {
-    const accessToken = this.authService.signIn(responseAuthDto);
-
-    res.cookie('Authentication', accessToken, {
-      domain: 'uxm.mju.ac.kr',
-      path: '/',
-      httpOnly: true,
-      maxAge: 0.5 * 60 * 60 * 1000, //0.5 hour
-    });
+    const accessToken = this.authService.signIn(responseAuthDto, res);
     return accessToken;
   }
 }

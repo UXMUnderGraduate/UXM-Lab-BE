@@ -9,9 +9,10 @@ async function run() {
 
   app.use(cookieParser());
   app.use(helmet());
-  app.setGlobalPrefix('api');
+  app.setGlobalPrefix('server');
 
   await app.listen(port);
+  console.log(port);
 }
 
 run();

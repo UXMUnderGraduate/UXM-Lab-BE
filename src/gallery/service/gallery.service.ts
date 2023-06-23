@@ -27,6 +27,7 @@ export class GalleryService {
     const galley = Gallery.of(
       createGalleyDto.title,
       createGalleyDto.contents,
+      createGalleyDto.videoUrl,
       imgUrls,
     );
 

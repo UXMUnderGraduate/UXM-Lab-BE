@@ -3,5 +3,7 @@ export class CreateGalleryDto {
 
   contents: string;
 
+  videoUrl: string;
+
   imgUrls: string[];
 }

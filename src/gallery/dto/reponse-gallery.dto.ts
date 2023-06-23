@@ -7,6 +7,8 @@ export class ResponseGalleryDto {
 
   private readonly contents: string;
 
+  private readonly videoUrl: string;
+
   private readonly imgUrls: string[];
 
   private readonly createdAt: Date;
@@ -17,6 +19,7 @@ export class ResponseGalleryDto {
     id: number,
     title: string,
     contents: string,
+    videoUrl: string,
     imgUrls: string[],
     createdAt: Date,
     updatedAt: Date,
@@ -24,6 +27,7 @@ export class ResponseGalleryDto {
     this.id = id;
     this.title = title;
     this.contents = contents;
+    this.videoUrl = videoUrl;
     this.imgUrls = imgUrls;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
@@ -39,6 +43,7 @@ export class ResponseGalleryDto {
       gallery.id,
       gallery.title,
       gallery.contents,
+      gallery.videoUrl,
       imgUrls,
       gallery.createdAt,
       gallery.updatedAt,

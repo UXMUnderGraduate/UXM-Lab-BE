@@ -5,7 +5,7 @@ import helmet from 'helmet';
 
 async function run() {
   const app = await NestFactory.create(AppModule, { cors: true });
-  const port: number = Number.parseInt(process.env.PORT) || 8887;
+  const port: number = Number.parseInt(process.env.PORT);
 
   app.use(cookieParser());
   app.use(helmet());

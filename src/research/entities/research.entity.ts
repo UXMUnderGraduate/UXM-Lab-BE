@@ -9,7 +9,7 @@ export class Research extends BaseTimeEntity {
   @Column()
   title: string;
 
-  @Column()
+  @Column({ length: 500 })
   contents: string;
 
   @Column()

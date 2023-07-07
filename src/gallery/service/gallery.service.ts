@@ -63,7 +63,7 @@ export class GalleryService {
       },
     });
 
-    if (gallery == null) {
+    if (gallery === null) {
       throw new NotFoundException();
     }
 

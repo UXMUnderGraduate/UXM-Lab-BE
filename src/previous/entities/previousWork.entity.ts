@@ -1,7 +1,8 @@
 import { BaseTimeEntity } from 'src/common/entities/BaseTimeEntity';
 import { GalleryImage } from 'src/gallery/entities/gallery-image.entity';
-import { Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity()
 export class PreviousWork extends BaseTimeEntity {
   @PrimaryGeneratedColumn()
   id: number;

@@ -11,6 +11,7 @@ import { GalleryModule } from './gallery/gallery.module';
 import { ConfigModule } from '@nestjs/config';
 import { ResearchModule } from './research/research.module';
 import { AuthModule } from './auth/auth.module';
+import { PreviousWorkModule } from './previous/previousWork.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { AuthModule } from './auth/auth.module';
     GalleryModule,
     ResearchModule,
     AuthModule,
+    PreviousWorkModule,
   ],
   controllers: [AppController],
   providers: [AppService],

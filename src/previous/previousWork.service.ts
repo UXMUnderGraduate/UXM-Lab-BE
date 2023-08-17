@@ -1,6 +1,6 @@
 import { ResponsePreviousWorkDto } from './dto/response-previousWork.dto';
 import { CreatePreviousWorkDto } from './dto/create-previousWork';
-import { PreviousWork } from 'src/previousWorks/entities/previousWork.entity';
+import { PreviousWork } from 'src/previous/entities/previousWork.entity';
 import { Injectable, NotFoundException, Res } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';

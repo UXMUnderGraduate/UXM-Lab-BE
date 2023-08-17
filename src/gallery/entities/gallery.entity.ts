@@ -28,6 +28,7 @@ export class Gallery extends BaseTimeEntity {
     images: GalleryImage[],
   ): Gallery {
     const gallery: Gallery = new Gallery();
+
     gallery.title = title;
     gallery.contents = contents;
     gallery.videoUrl = videoUrl;

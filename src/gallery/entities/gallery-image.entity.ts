@@ -1,3 +1,4 @@
+import { PreviousWork } from '../../previous/entities/previousWork.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseTimeEntity } from '../../common/entities/BaseTimeEntity';
 import { Gallery } from './gallery.entity';
@@ -15,6 +16,11 @@ export class GalleryImage extends BaseTimeEntity {
     onDelete: 'CASCADE',
   })
   gallery: Gallery;
+
+  @ManyToOne(() => PreviousWork, (Gallery) => Gallery.images, {
+    onDelete: 'CASCADE',
+  })
+  previousWork: PreviousWork;
 
   static from(url: string): GalleryImage {
     const image = new GalleryImage();

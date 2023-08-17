@@ -11,4 +11,4 @@ import { PreviousWorkService } from './previousWork.service';
   controllers: [PreviousWorkController],
   providers: [PreviousWorkService],
 })
-export class GalleryModule {}
+export class PreviousWorkModule {}

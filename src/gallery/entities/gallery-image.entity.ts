@@ -17,7 +17,7 @@ export class GalleryImage extends BaseTimeEntity {
   })
   gallery: Gallery;
 
-  @ManyToOne(() => PreviousWork, (Gallery) => Gallery.images, {
+  @ManyToOne(() => PreviousWork, (PreviousWork) => PreviousWork.images, {
     onDelete: 'CASCADE',
   })
   previousWork: PreviousWork;
